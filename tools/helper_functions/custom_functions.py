@@ -16,6 +16,7 @@ from tools.helper_functions.filters_helpers import filter_helpers_amenities_list
 
 
 def get_through_onboarding(self):
+    sleep(2)
     click_text(self, 'SKIP')
     sleep(1)
     Action.element_click(Action, AcceptTerms.text_agree_button)
@@ -87,9 +88,12 @@ def search_any_text_in_list(text, results_in_list):
         return False
 
 
-def amenities_check(self, filter_or_sort_selection):
+def amenities_check(self,element):
+    text = Action.get_text_from_element(Action, element)
+    Action.element_click(Action, element)
     Action.element_invisible(Action, AcceptTerms.loading)
     amenities_string = Action.get_text_from_element(Action, Sort.card1_amenities)
     card_list = amenities_string.split(', ')
-    amenities_key = filter_helpers_amenities_list(filter_or_sort_selection)
+    print(text)
+    amenities_key = filter_helpers_amenities_list(text)
     self.assertTrue(any(amenity in card_list for amenity in amenities_key), f"\nDid not find a match from\n{amenities_key}\nin\n{card_list}")

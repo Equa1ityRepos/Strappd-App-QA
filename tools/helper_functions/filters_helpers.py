@@ -30,7 +30,7 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Hygiene Kits")
         amenities_list.append("Personal Supplies")
         amenities_list.append("Toiletries")
-    elif filter_type == "Cloths":
+    elif filter_type == "Clothes":
         amenities_list.append('Clothing')
         amenities_list.append('Cloths for kids')
         amenities_list.append("Clothes")
@@ -41,6 +41,7 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Buss Passes")
         amenities_list.append("Transportation")
         amenities_list.append("Transportation Vouchers")
+        amenities_list.append("Transitional Living Program")
     elif filter_type == "Assistance":
         amenities_list.append("Advocacy")
         amenities_list.append("Legal Services")
@@ -141,7 +142,7 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Mental Health")
         amenities_list.append("Behavior")
         amenities_list.append("Behavioral")
-    elif filter_type == "Soup Kitchen":
+    elif filter_type == "Soup Kitchens":
         amenities_list.append("Meals")
         amenities_list.append("Soup Kitchen")
         amenities_list.append("Dinner")
@@ -153,6 +154,7 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Food")
         amenities_list.append("Pantries")
         amenities_list.append("Pantry")
+        amenities_list.append("Meals")
     elif filter_type == "Food":
         amenities_list.append("Food Bank")
         amenities_list.append("Food Boxes")
