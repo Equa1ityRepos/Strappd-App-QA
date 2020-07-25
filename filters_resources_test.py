@@ -7,7 +7,7 @@ from tools.helper_functions.filters_helpers import *
 from time import sleep
 
 
-class FiltersResources(unittest.TestCase, ResetCapabilities):
+class FiltersResourcesTest(unittest.TestCase, ResetCapabilities):
 
     @classmethod
     def tearDownClass(cls) -> None:

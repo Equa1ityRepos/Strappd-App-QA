@@ -7,7 +7,7 @@ from tools.helper_functions.filters_helpers import *
 from time import sleep
 
 
-class FiltersFood(unittest.TestCase, ResetCapabilities):
+class FiltersFoodTest(unittest.TestCase, ResetCapabilities):
     @classmethod
     def tearDownClass(cls) -> None:
         cls.driver.quit()
