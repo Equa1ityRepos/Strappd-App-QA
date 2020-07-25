@@ -7,8 +7,8 @@ https://trello.com/invite/b/vsqXg1i2/427a80496c75ea590cbf1c6a350da09d/strappd-au
 Test Cases Managed on QA touch
 
 https://sensorrepos.qatouch.com/project/overview/p/71mn
-A
-utomation Tool
+
+Automation Tool
 http://appium.io/
 
 Code Language
