@@ -21,6 +21,7 @@ class Action(ResetCapabilities):
 
     def get_text_from_element(self, locator):
         element = WebDriverWait(self.driver, 20).until(ex_cond.presence_of_element_located(locator)).text
+        return element
 
     def element_has_text(self, locator, text):
         element = WebDriverWait(self.driver, 20).until(ex_cond.text_to_be_present_in_element(locator, text))

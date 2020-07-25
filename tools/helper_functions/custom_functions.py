@@ -12,13 +12,16 @@ from tools.ex_conds import *
 import random
 import string
 from tools.ex_conds import Action
+from tools.helper_functions.filters_helpers import filter_helpers_amenities_list
+
 
 def get_through_onboarding(self):
     click_text(self, 'SKIP')
-    sleep(3)
+    sleep(1)
     Action.element_click(Action, AcceptTerms.text_agree_button)
     Action.element_invisible(Action, AcceptTerms.loading)
     Action.element_visible(Action, Header.menu)
+
 
 def click_text(self, text):
     self.driver.find_element_by_xpath('//*[contains(@text, "{}")]'.format(text)).click()
@@ -82,3 +85,11 @@ def search_any_text_in_list(text, results_in_list):
         return True
     else:
         return False
+
+
+def amenities_check(self, filter_or_sort_selection):
+    Action.element_invisible(Action, AcceptTerms.loading)
+    amenities_string = Action.get_text_from_element(Action, Sort.card1_amenities)
+    card_list = amenities_string.split(', ')
+    amenities_key = filter_helpers_amenities_list(filter_or_sort_selection)
+    self.assertTrue(any(amenity in card_list for amenity in amenities_key), f"\nDid not find a match from\n{amenities_key}\nin\n{card_list}")
