@@ -22,16 +22,11 @@ class FiltersResourcesTest(unittest.TestCase, ResetCapabilities):
 
     def test_1b_select_resources(self):
         # select Resources Filter Option
-        Action.element_click(Action, FilterBar.resources)
-        Action.element_invisible(Action, AcceptTerms.loading)
         amenities_check(self, FilterBar.resources)
 
     def test_1c_sort_bar(self):
         # in sort bar All is defaulted as selected, also listed is Cloths, Hygiene, Transit and Assistance
-        Action.element_invisible(Action, AcceptTerms.loading)
-        Action.element_click(Action, Sort.resources_all)
-        Action.element_invisible(Action, AcceptTerms.loading)
-        amenities_check(self, FilterBar.resources)
+        amenities_check(self, Sort.resources_all)
 
     def test_2a_sort_cloths(self):
         # Select Cloths
