@@ -1,5 +1,7 @@
 import os
 import unittest
+from argparse import Action
+
 from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,17 +13,17 @@ from tools.global_data import *
 from tools.ex_conds import *
 import random
 import string
-from tools.ex_conds import Action
+from tools.ex_conds import *
 from tools.helper_functions.filters_helpers import filter_helpers_amenities_list
 
 
 def get_through_onboarding(self):
-    sleep(2)
-    click_text(self, 'SKIP')
+    sleep(10)
+    element_click(self, AcceptTerms.skip)
     sleep(1)
-    Action.element_click(Action, AcceptTerms.text_agree_button)
-    Action.element_invisible(Action, AcceptTerms.loading)
-    Action.element_visible(Action, Header.menu)
+    element_click(self, AcceptTerms.text_agree_button)
+    element_invisible(self, AcceptTerms.loading)
+    element_visible(self, Header.menu)
 
 
 def click_text(self, text):
@@ -52,7 +54,7 @@ def visible_assert(self, element):
 
 def standard_search(self, search_text, list_text):
     self.driver.implicitly_wait(20)
-    Action.element_send_text(Action, Search.search_bar, 20)
+    element_send_text(self, AcceptTerms.skip, 20)
     reddit_list = search_cards(self)
     print(reddit_list)
     self.assertTrue(search_any_text_in_list(list_text, reddit_list))
@@ -89,10 +91,10 @@ def search_any_text_in_list(text, results_in_list):
 
 
 def amenities_check(self,element):
-    text = Action.get_text_from_element(Action, element)
-    Action.element_click(Action, element)
-    Action.element_invisible(Action, AcceptTerms.loading)
-    amenities_string = Action.get_text_from_element(Action, Sort.card1_amenities)
+    text = get_text_from_element(self, element)
+    element_click(self, element)
+    element_invisible(self, AcceptTerms.loading)
+    amenities_string = get_text_from_element(self, Sort.card1_amenities)
     card_list = amenities_string.split(', ')
     print(text)
     amenities_key = filter_helpers_amenities_list(text)

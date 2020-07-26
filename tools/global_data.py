@@ -40,6 +40,7 @@ class Sort:
 
 
 class AcceptTerms:
+    skip = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View[1]'
     title = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]'
     text_agree_button = By.XPATH, '//*[contains(@text, "{}")]'.format('I Agree')
     text_cancel_button = By.XPATH, '//*[contains(@text, "{}")]'.format('Cancel')

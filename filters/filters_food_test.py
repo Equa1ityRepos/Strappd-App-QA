@@ -1,15 +1,29 @@
 import unittest
 from appium import webdriver
 from tools.ex_conds import *
-from tools.desired_capabilities import *
 from tools.helper_functions.custom_functions import *
 from tools.helper_functions.filters_helpers import *
 from time import sleep
 
 
-class FiltersFoodTest(unittest.TestCase, ResetCapabilities):
+class FiltersFoodTestCase(unittest.TestCase, Action):
+
     @classmethod
-    def tearDownClass(cls) -> None:
+    def setUpClass(cls):
+        desired_caps = {
+            'platformName': 'Android',
+            'automationName': 'UiAutomator2',
+            'deviceName': 'Android',
+            'app': PATH('..\\tools\\app\\org.strappd.apk'),
+            "appPackage": "org.strappd",
+            "appActivity": ".MainActivity",
+            "ignoreUnimportantViews": "true",
+            "autoGrantPermissions": "true",
+        }
+        cls.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+    @classmethod
+    def tearDownClass(cls):
         cls.driver.quit()
 
     def test_0_skip_onboarding(self):
@@ -24,9 +38,8 @@ class FiltersFoodTest(unittest.TestCase, ResetCapabilities):
         # List Updates
         # Sort Options default with All Selected with Soup Kitches and Food Pantries as options
         amenities_check(self, FilterBar.food)
-        Action.element_visible(Action, Sort.soup_kitchen)
-        Action.element_visible(Action, Sort.food_pantries)
-
+        element_visible(self, Sort.soup_kitchen)
+        element_visible(self, Sort.food_pantries)
 
     def test_2b_soup_kitchen(self):
         # Select Soup Kitchen
