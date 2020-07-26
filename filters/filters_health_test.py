@@ -1,15 +1,29 @@
 import unittest
 from appium import webdriver
 from tools.ex_conds import *
-from tools.desired_capabilities import *
 from tools.helper_functions.custom_functions import *
 from tools.helper_functions.filters_helpers import *
 from time import sleep
 
 
-class FiltersHealthTest(unittest.TestCase, ResetCapabilities):
+class FiltersHealthTestCase(unittest.TestCase):
+
     @classmethod
-    def tearDownClass(cls) -> None:
+    def setUpClass(cls):
+        desired_caps = {
+            'platformName': 'Android',
+            'automationName': 'UiAutomator2',
+            'deviceName': 'Android',
+            'app': PATH('..\\tools\\app\\org.strappd.apk'),
+            "appPackage": "org.strappd",
+            "appActivity": ".MainActivity",
+            "ignoreUnimportantViews": "true",
+            "autoGrantPermissions": "true",
+        }
+        cls.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+    @classmethod
+    def tearDownClass(cls):
         cls.driver.quit()
 
     def test_0_skip_onboarding(self):
@@ -23,8 +37,8 @@ class FiltersHealthTest(unittest.TestCase, ResetCapabilities):
         # Select Health Filter
         amenities_check(self, FilterBar.health)
         # in sort bar All is defaulted as selected, also listed isMedical and Counseling
-        Action.element_visible(Action, Sort.medical)
-        Action.element_visible(Action, Sort.counseling)
+        element_visible(self, Sort.medical)
+        element_visible(self, Sort.counseling)
 
     def test_2b_medical_sort(self):
         # Select Medical

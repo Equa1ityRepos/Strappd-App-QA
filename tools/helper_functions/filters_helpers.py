@@ -11,13 +11,12 @@ from tools.global_data import *
 from tools.ex_conds import *
 import random
 import string
-from tools.ex_conds import Action
 from .custom_functions import *
 
 
 def filter_helpers_shelter_default_check(self):
-    Action.element_visible(Action, FilterBar.shelter)
-    Action.element_click(Action, FilterBar.shelter)
+    element_visible(self, FilterBar.shelter)
+    element_click(self, FilterBar.shelter)
     amenities_check(self, "Shelter")
 
 
@@ -112,7 +111,6 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Dental")
         amenities_list.append("Health")
     elif filter_type == "Counseling":
-        print('Loads Dont Exist Yet ^.^')
         amenities_list.append("Counseling")
         amenities_list.append("Substance Abuse Treatment")
         amenities_list.append("Therapy")
@@ -120,6 +118,7 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Mental Health")
         amenities_list.append("Behavior")
         amenities_list.append("Behavioral")
+        amenities_list.append("Counseling & more")
     elif filter_type == "Health":
         amenities_list.append("Clinic")
         amenities_list.append("HIV Testing")
@@ -142,6 +141,7 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Mental Health")
         amenities_list.append("Behavior")
         amenities_list.append("Behavioral")
+        amenities_list.append("Counseling & more")
     elif filter_type == "Soup Kitchens":
         amenities_list.append("Meals")
         amenities_list.append("Soup Kitchen")
@@ -176,6 +176,7 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Shelter")
         amenities_list.append("Safe Place program")
     elif filter_type == "Transitional":
+        amenities_list.append('Emergency Shelter')
         amenities_list.append("Day")
         amenities_list.append("Night")
         amenities_list.append("Evening")
