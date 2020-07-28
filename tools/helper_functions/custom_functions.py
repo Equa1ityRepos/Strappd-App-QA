@@ -17,13 +17,66 @@ from tools.ex_conds import *
 from tools.helper_functions.filters_helpers import filter_helpers_amenities_list
 
 
+
+def compare_card_1(self,locator1, locator2):
+    card_1 = get_text_from_element(self, locator1)
+    print(card_1)
+    element_click(self, ResourceCards.card_1_front_page)
+    element_invisible(self,AcceptTerms.loading)
+    nameOnCard = get_text_from_element(self,locator2)
+    print(nameOnCard)
+    if card_1 == nameOnCard:
+        return True
+    else:
+        print("they are not the same")
+
+def compare_card_2(self,locator1, locator2):
+    card_1 = get_text_from_element(self, locator1)
+    element_click(self, ResourceCards.card_2_front_page)
+    element_invisible(self,AcceptTerms.loading)
+    nameOnCard = get_text_from_element(self,locator2)
+    if card_1 == nameOnCard:
+        return True
+    else:
+        print("they are not the same")
+
+
+
+def check_distance(self, locator, less_than_number):
+    string = get_text_from_element(self, locator)
+    split_text = string.split(' ')
+    print(split_text)
+    number = []
+    number.append(split_text[0])
+    strings = [str(integer) for integer in number]
+    a_string = "".join(strings)
+    a_float = float(a_string)
+    if a_float < less_than_number:
+        return True
+    else:
+        return False
+
+
+
+def check_text(self, locator, text):
+    check = get_text_from_element(self,locator)
+    if text in check:
+        return True
+    else:
+        print(text + " not found in " + check)
+
+
+def click_menu(self):
+    element_click(self, Header.menu)
+
 def get_through_onboarding(self):
     sleep(10)
     element_click(self, AcceptTerms.skip)
-    sleep(1)
+    sleep(5)
     element_click(self, AcceptTerms.text_agree_button)
     element_invisible(self, AcceptTerms.loading)
     element_visible(self, Header.menu)
+
 
 
 def click_text(self, text):
@@ -99,3 +152,4 @@ def amenities_check(self,element):
     print(text)
     amenities_key = filter_helpers_amenities_list(text)
     self.assertTrue(any(amenity in card_list for amenity in amenities_key), f"\nDid not find a match from\n{amenities_key}\nin\n{card_list}")
+
