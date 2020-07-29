@@ -24,7 +24,7 @@ class ResourceCards:
     website= By.XPATH, '//android.view.View[3]/android.view.View[3]/android.view.View/android.view.View[2]/android.view.View'
     facebook = By.XPATH, '//android.view.View[3]/android.view.View[4]/android.view.View/android.view.View[2]/android.view.View'
     SVDP_logo = By.XPATH, '//android.view.View[@content-desc="St. Vincent de Paul of Baltimore logo"]'
-
+    map_full_screen = By.XPATH, '//android.view.View[1]/android.view.View[3]/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View/android.view.View/android.widget.Button'
 
 class Location:
     # location icon first page
