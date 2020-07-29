@@ -39,6 +39,7 @@ class DemographicsTestCase(unittest.TestCase):
         #click on men
         element_click(self, Demographics.men)
         element_invisible(self, AcceptTerms.loading)
+        time.sleep(3)
         #prove that men page is pulling results for men.
         self.assertTrue(check_text(self, Demographics.men_page_1,"Men"))
         self.assertTrue(check_text(self, Demographics.men_page_2, "Men"))
@@ -82,7 +83,7 @@ class DemographicsTestCase(unittest.TestCase):
         element_click(self, Demographics.seniors)
         element_invisible(self, AcceptTerms.loading)
         # proof that all is for all
-        self.assertTrue(check_text(self, Demographics.seniors_page_1, "Seniors"))
+        self.assertTrue(check_text(self, Demographics.seniors_page_1, "Seniors" or "Anyone"))
         self.assertTrue(check_text(self, Demographics.seniors_page_2, "Seniors"))
         self.assertTrue(check_text(self, Demographics.seniors_page_3, "Seniors"))
 
