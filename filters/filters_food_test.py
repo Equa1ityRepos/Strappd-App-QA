@@ -6,7 +6,7 @@ from tools.helper_functions.filters_helpers import *
 from time import sleep
 
 
-class FiltersFoodTestCase(unittest.TestCase, Action):
+class FiltersFoodTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):

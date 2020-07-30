@@ -6,7 +6,7 @@ from tools.helper_functions.filters_helpers import *
 from time import sleep
 
 
-class FiltersResourcesTestCase(unittest.TestCase, Action):
+class FiltersResourcesTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
