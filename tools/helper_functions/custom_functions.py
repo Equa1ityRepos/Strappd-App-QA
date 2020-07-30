@@ -1,12 +1,12 @@
 import os
 import unittest
-from argparse import Action
-
+import re
 from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from appium.webdriver.common.mobileby import By
 from appium.webdriver.common.mobileby import MobileBy
+from appium.webdriver.common.touch_action import *
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 from tools.global_data import *
@@ -32,12 +32,25 @@ def click_text(self, text):
 
 def find_by_text(self, text):
     self.driver.implicitly_wait(1)
-    if not self.driver.find_element_by_xpath('//*[contains(@text, "{}")]'.format(text)).is_displayed():
-        print('Element is not displayed')
-        return False
-    else:
+    try:
+        self.driver.find_element_by_xpath('//*[contains(@text, "{}")]'.format(text)).is_displayed()
         print('Element is displayed')
         return True
+    except Exception as r:
+        print('Element is not displayed')
+        return False
+
+
+def search_by_text_and_click(self, text):
+    sleep(2)
+    element = self.driver.find_elements_by_class_name('android.widget.Button')
+    print(element)
+    search = element[1]
+    search.click()
+    element_send_text(self, search_charle.field, text)
+    element_invisible(self, AcceptTerms.loading)
+    element_has_text(self, CardDetails.dash_card1_title, text)
+    element_click(self, CardDetails.dash_card1_title)
 
 
 def visible_assert(self, element):
@@ -76,6 +89,20 @@ def search_cards(self):
     return search_list
 
 
+def scroll_down(self):
+    screen = self.driver.get_window_size()
+    x = screen['width']
+    y = screen['height']
+    self.driver.swipe(start_x=x / 2, start_y=y * 3 / 4, end_x=x / 2, end_y=y / 3, duration=800)
+
+
+def scroll_up(self):
+    screen = self.driver.get_window_size()
+    x = screen['width']
+    y = screen['height']
+    self.driver.swipe(start_x=x / 2, start_y=y / 2, end_x=x / 2, end_y=y / 100 * 90, duration=800)
+
+
 def get_random_letters(self):
     letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     random_string = []
@@ -90,12 +117,13 @@ def search_any_text_in_list(text, results_in_list):
         return False
 
 
-def amenities_check(self,element):
+def amenities_check(self, element):
     text = get_text_from_element(self, element)
     element_click(self, element)
     element_invisible(self, AcceptTerms.loading)
     amenities_string = get_text_from_element(self, Sort.card1_amenities)
-    card_list = amenities_string.split(', ')
+    card_list = [x for x in re.split(',| ', amenities_string) if x != '']
     print(text)
     amenities_key = filter_helpers_amenities_list(text)
-    self.assertTrue(any(amenity in card_list for amenity in amenities_key), f"\nDid not find a match from\n{amenities_key}\nin\n{card_list}")
+    self.assertTrue(any(amenity in card_list for amenity in amenities_key),
+                    f"\nDid not find a match from\n{amenities_key}\nin\n{card_list}")

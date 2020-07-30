@@ -21,5 +21,5 @@ suite.addTests(loader.loadTestsFromTestCase(FiltersWorkTestCase))
 
 
 # initialize a runner, pass it your suite and run it
-runner = unittest.TextTestRunner(verbosity=3)
+runner = unittest.TextTestRunner(verbosity=2)
 result = runner.run(suite)

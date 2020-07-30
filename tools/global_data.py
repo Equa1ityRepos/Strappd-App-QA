@@ -6,10 +6,10 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import *
 
 # Constant Globals
-
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
+SEARCH_CHARLE = 'First Step House of Orange County'
 
 
 class FilterBar:
@@ -39,6 +39,24 @@ class Sort:
     transitional = By.XPATH, '//android.widget.ListView/android.view.View[3]/android.view.View'
 
 
+class CardDetails:
+    dash_card1_title = By.XPATH, '//android.view.View[3]/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View[1]/android.view.View[1]'
+    title = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]/android.view.View/android.view.View/android.view.View/android.view.View[1]'
+    amenities = By.XPATH, '//android.view.View/android.view.View[2]/android.widget.TextView'
+    charle_phone = By.XPATH, '//android.view.View[@content-desc="(949) 642-2941"]/android.widget.TextView'
+    charle_email = By.XPATH, '//android.view.View[@content-desc="info@charlestreet.org"]/android.widget.TextView'
+    web_page = By.XPATH, '//android.view.View[3]/android.view.View/android.view.View[2]/android.view.View'
+    social_media1 = By.XPATH, '//android.view.View[4]/android.view.View/android.view.View[2]/android.view.View'
+    social_media2 = By.XPATH, '//android.view.View[5]/android.view.View/android.view.View[2]/android.view.View'
+    address = By.XPATH, '//android.view.View[3]/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View/android.view.View[2]'
+    map = By.XPATH, By.XPATH, '//android.view.View[3]/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View/android.view.View/android.view.View[1]'
+    contact_text = By.XPATH, '//android.view.View[3]/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]' # Please contact this service for hours
+
+class search_charle:
+    field = By.XPATH, '//android.widget.EditText'
+
+
+
 class AcceptTerms:
     skip = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View[1]'
     title = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]'
@@ -51,5 +69,5 @@ class Header:
     menu = By.XPATH, '//android.view.View[1]/android.view.View[2]/android.view.View/android.widget.Button'
     location_button = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[1]'
     title = By.XPATH, 'android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[2]'
-    search = By.XPATH, '//android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[3]/android.widget.Button'
+    search = By.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[3]/android.widget.Button'
     phone = By.XPATH, '//android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View/android.view.View'
