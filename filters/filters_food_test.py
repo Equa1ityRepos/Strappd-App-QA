@@ -6,7 +6,7 @@ from tools.helper_functions.filters_helpers import *
 from time import sleep
 
 
-class FiltersFoodTestCase(unittest.TestCase, Action):
+class FiltersFoodTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -27,7 +27,7 @@ class FiltersFoodTestCase(unittest.TestCase, Action):
         cls.driver.quit()
 
     def test_0_skip_onboarding(self):
-        get_through_onboarding(self)
+        get_through_onboarding(self) #copy everything to here for new pages i guess
 
     def test_1a_shelter_defaulted_as_selected(self):
         # Shelter defaults as the selected filter

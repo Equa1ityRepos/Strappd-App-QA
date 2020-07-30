@@ -99,3 +99,6 @@ def amenities_check(self,element):
     print(text)
     amenities_key = filter_helpers_amenities_list(text)
     self.assertTrue(any(amenity in card_list for amenity in amenities_key), f"\nDid not find a match from\n{amenities_key}\nin\n{card_list}")
+
+def click_menu(self):
+    element_click(self, Header.menu)
