@@ -7,7 +7,7 @@ from time import sleep
 import time
 import re
 
-class DemographicsTestCase(unittest.TestCase):
+class DemographicsTestCases(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -40,6 +40,8 @@ class DemographicsTestCase(unittest.TestCase):
         element_click(self, Demographics.men)
         element_invisible(self, AcceptTerms.loading)
         time.sleep(3)
+        # checking distance
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
         #prove that men page is pulling results for men.
         self.assertTrue(check_text(self, Demographics.men_page_1,"Men"))
         self.assertTrue(check_text(self, Demographics.men_page_2, "Men"))
@@ -51,6 +53,8 @@ class DemographicsTestCase(unittest.TestCase):
         #click women
         element_click(self, Demographics.women)
         element_invisible(self, AcceptTerms.loading)
+        #checking distance
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
         #prove that options available are for women
         self.assertTrue(check_text(self, Demographics.woman_page_1, "Women"))
         self.assertTrue(check_text(self, Demographics.women_page_2, "Women"))
@@ -60,8 +64,10 @@ class DemographicsTestCase(unittest.TestCase):
         click_menu(self)
         element_click(self, Demographics.youth)
         element_invisible(self, AcceptTerms.loading)
+        # checking distance
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
         # proof that Youth services are on the page.
-        # self.assertTrue(check_demographics_text(self,Demographics.youth_page_1, "Youth"))
+        self.assertTrue(check_text(self,Demographics.youth_page_1, "Youth"))
         self.assertTrue(check_text(self, Demographics.youth_page_2, 'Youth/Kids'))
         self.assertTrue(check_text(self, Demographics.youth_page_3, 'Youth/Kids'))
 
@@ -71,6 +77,8 @@ class DemographicsTestCase(unittest.TestCase):
         click_menu(self)
         element_click(self, Demographics.all)
         element_invisible(self, AcceptTerms.loading)
+        #checking distance
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
         # proof that all is for all
         self.assertTrue(check_text(self, Demographics.all_page_1, "Anyone"))
         self.assertTrue(check_text(self, Demographics.all_page_2, "Anyone"))
@@ -82,7 +90,10 @@ class DemographicsTestCase(unittest.TestCase):
         click_menu(self)
         element_click(self, Demographics.seniors)
         element_invisible(self, AcceptTerms.loading)
-        # proof that all is for all
+        element_invisible(self, AcceptTerms.loading)
+        #making sure distance is okay for these selectors
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
+        #checking that seniors is displayed
         self.assertTrue(check_text(self, Demographics.seniors_page_1, "Seniors" or "Anyone"))
         self.assertTrue(check_text(self, Demographics.seniors_page_2, "Seniors"))
         self.assertTrue(check_text(self, Demographics.seniors_page_3, "Seniors"))
@@ -93,6 +104,8 @@ class DemographicsTestCase(unittest.TestCase):
         click_menu(self)
         element_click(self, Demographics.disabled)
         element_invisible(self, AcceptTerms.loading)
+        # checking distance
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
         #proof that services are for disabled
         self.assertTrue(check_text(self, Demographics.disabled_page_1, "Disabled"))
         self.assertTrue(check_text(self, Demographics.disabled_page_2, "Disabled"))
@@ -105,6 +118,8 @@ class DemographicsTestCase(unittest.TestCase):
         click_menu(self)
         element_click(self, Demographics.families)
         element_invisible(self, AcceptTerms.loading)
+        # checking distance
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
         #proof is for families
         self.assertTrue(check_text(self, Demographics.families_page_1, "Families"))
         self.assertTrue(check_text(self, Demographics.families_page_2, "Families"))
@@ -116,6 +131,8 @@ class DemographicsTestCase(unittest.TestCase):
         click_menu(self)
         element_click(self, Demographics.lgbtq)
         element_invisible(self, AcceptTerms.loading)
+        # checking distance
+        self.assertTrue(check_distance(self, Location.location_distance_1, 10))
         # proof for LGBTQ+
         self.assertTrue(check_text(self, Demographics.lgbtq_page_1, "LGBT"))
         self.assertTrue(check_text(self, Demographics.lgbtq_page_2, "LGBT"))

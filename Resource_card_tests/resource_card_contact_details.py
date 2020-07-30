@@ -32,26 +32,27 @@ class ResourceCardDetailsTestCases(unittest.TestCase, Action):
     def test_1_card_names(self):
         #in custom functions comparing the name in list to name on card for 1st selector.
         compare_card_1(self, ResourceCards.card_1_front_page, ResourceCards.card_header_1)
-        element_click(self, Header.back_arrow)
+        element_click(self, ResourceCards.resource_cards_back_arrow)
         element_invisible(self, AcceptTerms.loading)
         time.sleep(5)
         # comparing 2nd selector
         compare_card_2(self, ResourceCards.card_2_front_page, ResourceCards.card_header_2)
-        element_click(self, Header.back_arrow)
+        element_click(self, ResourceCards.resource_cards_back_arrow)
 
     def test_2_website_card_2(self):
         element_invisible(self, AcceptTerms.loading)
         element_click(self, ResourceCards.card_2_front_page)
         element_invisible(self, AcceptTerms.loading)
         element_click(self, ResourceCards.website)
-        time.sleep(5)
+        time.sleep(10)
         #screenshots as proof
         ts = time.strftime("%m_%d_%Y_%H%M%S")
         activityname = self.driver.current_activity
         filename = activityname+ts
         self.driver.save_screenshot(r"C:\Users\ginam\Desktop\strappd2\Strappd-App-QA\Screenshots/"+filename+".png")
         self.driver.press_keycode(4)
-        element_click(self, Header.back_arrow)
+        #TODO: ASK JASON ABOUT ADDING THIS INTO CUSTOM FUNCTIONS
+        element_click(self, ResourceCards.resource_cards_back_arrow)
 
     def test_3_facebook_card_2(self):
         element_invisible(self, AcceptTerms.loading)
@@ -66,7 +67,7 @@ class ResourceCardDetailsTestCases(unittest.TestCase, Action):
         self.driver.save_screenshot(r"C:\Users\ginam\Desktop\strappd2\Strappd-App-QA\Screenshots/" + filename + ".png")
         time.sleep(5)
         self.driver.press_keycode(4)
-        element_click(self, Header.back_arrow)
+        element_click(self, ResourceCards.resource_cards_back_arrow)
 
     def test_4_map(self):
         element_invisible(self, AcceptTerms.loading)
@@ -74,7 +75,7 @@ class ResourceCardDetailsTestCases(unittest.TestCase, Action):
         element_invisible(self, AcceptTerms.loading)
         self.assertTrue(self, ResourceCards.map_full_screen)
         element_invisible(self, AcceptTerms.loading)
-        element_click(self, Header.back_arrow)
+        element_click(self, ResourceCards.resource_cards_back_arrow)
 
 if __name__ == '__main__':
     unittest.main()

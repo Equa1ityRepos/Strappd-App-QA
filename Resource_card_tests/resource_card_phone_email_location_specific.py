@@ -26,12 +26,14 @@ class ResourceCardDetailsTestCases(unittest.TestCase, Action):
     def tearDownClass(cls):
         cls.driver.quit()
 
+    def test_0_skip_onboarding(self):
+        get_through_onboarding(self)
+
     # TODO: HI JASON! If you want to check these tests you'll have to find specific xpaths for email, and phone.
 
     def test_1_phone_number_manna(self): #THIS TEST IS LOCATION SPECIFIC AND WILL NOT WORK ANYWHERE BUT BALTIMORE
         element_invisible(self, AcceptTerms.loading)
         time.sleep(5)
-        self.driver.swipe(380,259,280,659)
         element_click(self, ResourceCards.card_1_front_page)
         element_invisible(self, AcceptTerms.loading)
         element_click(self, ResourceCards.card_1_phone)
@@ -43,7 +45,7 @@ class ResourceCardDetailsTestCases(unittest.TestCase, Action):
         self.driver.press_keycode(4)
         self.driver.press_keycode(4)
         time.sleep(5)
-        element_click(self, Header.back_arrow)
+        element_click(self, ResourceCards.resource_cards_back_arrow)
 
     def test_2_email_manna(self): #THIS TEST IS LOCATION SPECIFIC AND WILL NOT WORK ANYWHERE BUT BALTIMORE
         element_invisible(self, AcceptTerms.loading)
@@ -58,11 +60,7 @@ class ResourceCardDetailsTestCases(unittest.TestCase, Action):
         self.driver.press_keycode(4)
         self.driver.press_keycode(4)
         self.driver.press_keycode(4)
-        element_click(self, Header.back_arrow)
-
-    def test_0_skip_onboarding(self):
-        get_through_onboarding(self)
-
+        element_click(self, ResourceCards.resource_cards_back_arrow)
 
 if __name__ == '__main__':
     unittest.main()

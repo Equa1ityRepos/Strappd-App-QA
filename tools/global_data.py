@@ -12,6 +12,9 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
+class KudosButton:
+    Kudos_current_location_1 = '//android.view.View[1]/android.view.View[3]/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]'
+
 
 class ResourceCards:
     card_1_front_page = By.XPATH, '//android.view.View[1]/android.view.View[3]/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View[1]/android.view.View[1]'
@@ -25,6 +28,7 @@ class ResourceCards:
     facebook = By.XPATH, '//android.view.View[3]/android.view.View[4]/android.view.View/android.view.View[2]/android.view.View'
     SVDP_logo = By.XPATH, '//android.view.View[@content-desc="St. Vincent de Paul of Baltimore logo"]'
     map_full_screen = By.XPATH, '//android.view.View[1]/android.view.View[3]/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View/android.view.View/android.widget.Button'
+    resource_cards_back_arrow = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View/android.view.View[1]'
 
 class Location:
     # location icon first page
@@ -114,7 +118,6 @@ class AcceptTerms:
 
 
 class Header:
-    back_arrow = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View/android.view.View[1]'
     menu = By.XPATH, '//android.view.View[1]/android.view.View[2]/android.view.View/android.widget.Button'
     location_button = By.XPATH, '//android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[1]'
     title = By.XPATH, 'android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[2]'
