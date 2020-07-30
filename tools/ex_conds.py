@@ -33,3 +33,6 @@ def element_has_text(self, locator, text):
 
 def element_send_text(self, locator, text):
     element = WebDriverWait(self.driver, 20).until(ex_cond.element_to_be_clickable(locator)).send_keys(text)
+
+def element_to_be_clickable(self,locator):
+    element = WebDriverWait(self.driver, 20).until(ex_cond.element_to_be_clickable(locator)).is_enabled()
