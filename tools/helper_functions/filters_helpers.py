@@ -88,6 +88,10 @@ def filter_helpers_amenities_list(filter_type):
         amenities_list.append("Job")
         amenities_list.append("Employment")
         amenities_list.append("Mentoring")
+        amenities_list.append("Life Skills and Job Training")
+        amenities_list.append("Employment Assistance")
+        amenities_list.append("Workforce Development & more")
+        amenities_list.append("Workforce Development")
     elif filter_type == "Medical":
         amenities_list.append("Clinic")
         amenities_list.append("HIV")
